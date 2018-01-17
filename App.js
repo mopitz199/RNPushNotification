@@ -15,28 +15,29 @@ import {
 
 var PushNotification = require('react-native-push-notification');
 
+
 PushNotification.configure({
 
     // (optional) Called when Token is generated (iOS and Android)
     onRegister: function(token) {
-
+      console.log(token)
     },
 
     onNotification: function(notification) {
       setTimeout(() => {
         if(!notification['foreground']){
-          console.warn(notification)
+          ToastAndroid.show("You've clicked!", ToastAndroid.SHORT);
         }
       }, 1);
       PushNotification.localNotificationSchedule({
-        title: 'Walter is doing tradding',
-        message: notification['nombre'], // (required)
+        title: 'Notification with my name',
+        message: notification['name'], // (required)
         date: new Date(Date.now()) // in 60 secs
       });
     },
 
     // ANDROID ONLY: GCM Sender ID (optional - not required for local notifications, but is need to receive remote push notifications)
-    senderID: "1045527139327",
+    senderID: "your-sender-id",
 
 });
 

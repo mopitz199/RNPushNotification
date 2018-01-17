@@ -1,0 +1,5 @@
+from gcm import GCM
+gcm = GCM("api-key", debug=True)
+token = "token-string"
+data = {'name': 'My name is Maximiliano'}
+response = gcm.plaintext_request(registration_id=token, data=data)
